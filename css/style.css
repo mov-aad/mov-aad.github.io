@@ -1,0 +1,951 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --page-col: #FFFFFF;
+    --text-col: #404040;
+    --link-col: #0072CE;
+    --hover-col: #0072CE;
+    --navbar-col: #4D89BD;
+    --navbar-text-col: #FFFFFF;
+    --navbar-border-col: #4D89BD;
+    --footer-col: #FFFFFF;
+    --footer-text-col: #777777;
+    --footer-link-col: #404040;
+    --footer-hover-col: #0085A1;
+    --body-font: 'Lora', 'Times New Roman', serif;
+    --header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mid-col: #808080;
+    
+    /* Additional derived colors */
+    --bg-gray: #f8fafc;
+    --border-color: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-col);
+    background-color: var(--page-col);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--link-col);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--hover-col);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--navbar-col);
+    border-bottom: 2px solid var(--navbar-border-col);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.nav-brand {
+    font-family: var(--header-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navbar-text-col);
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--navbar-text-col);
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    display: block;
+    font-family: var(--header-font);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    position: relative;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--navbar-text-col);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 80%;
+}
+
+/* Mobile Toggle Button */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--navbar-text-col);
+    margin: 5px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--navbar-col) 0%, #3a6d9e 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-family: var(--header-font);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--link-col);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-col);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 114, 206, 0.3);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: var(--navbar-col);
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Sections */
+.section {
+    padding: 4rem 0;
+}
+
+.section-gray {
+    background-color: var(--bg-gray);
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-col);
+}
+
+.content-box {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.content-box h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--text-col);
+    border-bottom: 2px solid var(--navbar-col);
+    padding-bottom: 0.5rem;
+}
+
+.content-box h4 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-col);
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-col);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--navbar-col);
+    font-family: var(--header-font);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--mid-col);
+    font-family: var(--header-font);
+}
+
+/* Tables */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background-color: white;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: var(--body-font); /* Use body font for tables */
+}
+
+.data-table thead {
+    background-color: var(--navbar-col);
+    color: white;
+}
+
+.data-table th {
+    padding: 1rem;
+    text-align: left;
+    font-family: var(--body-font); /* Changed from header-font */
+    font-weight: 600;
+}
+
+.data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--body-font); /* Explicitly set body font */
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--bg-gray);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: var(--body-font); /* Use body font for stat cards */
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--navbar-col);
+    font-family: var(--body-font); /* Changed from header-font to body-font */
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--mid-col);
+    font-family: var(--body-font); /* Changed from header-font to body-font */
+}
+
+/* Code Blocks - keep monospace */
+.code-block {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace; /* Keep monospace for code */
+}
+
+.code-block code {
+    color: var(--text-col);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-family: 'Courier New', Courier, monospace; /* Keep monospace for code */
+}
+
+/* Download Section */
+.download-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.download-option {
+    padding: 1.5rem;
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+    border-left: 4px solid var(--navbar-col);
+    font-family: var(--body-font); /* Use body font */
+}
+
+.download-option h4 {
+    margin-top: 0;
+    color: var(--navbar-col);
+    font-family: var(--header-font); /* Keep header font for h4 */
+}
+
+.download-note {
+    font-size: 0.9rem;
+    color: var(--mid-col);
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-family: var(--body-font); /* Use body font */
+}
+
+/* Lists */
+ul, ol {
+    font-family: var(--body-font);
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-col);
+    font-family: var(--body-font); /* Explicitly set body font */
+}
+
+/* Paragraphs and content */
+p {
+    font-family: var(--body-font);
+}
+
+/* Download Section */
+.download-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.download-option {
+    padding: 1.5rem;
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+    border-left: 4px solid var(--navbar-col);
+}
+
+.download-option h4 {
+    margin-top: 0;
+    color: var(--navbar-col);
+}
+
+.download-note {
+    font-size: 0.9rem;
+    color: var(--mid-col);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--footer-col);
+    color: var(--footer-text-col);
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}
+
+.footer a {
+    color: var(--footer-link-col);
+    margin: 0 0.5rem;
+}
+
+.footer a:hover {
+    color: var(--footer-hover-col);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        gap: 0;
+    }
+
+    .nav-links.active {
+        max-height: 400px;
+        padding: 1rem 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 1rem 1.25rem;
+        border-radius: 0;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: none;
+        padding-left: 1.5rem;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .download-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .content-box {
+        padding: 1.5rem;
+    }
+}
+
+/* Figure Styling */
+.dataset-figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.dataset-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.dataset-figure figcaption {
+    margin-top: 1rem;
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+    color: var(--mid-col);
+    font-style: italic;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.dataset-figure figcaption strong {
+    font-weight: 600;
+    color: var(--text-col);
+    font-style: normal;
+}
+
+/* Responsive figure sizing */
+@media (max-width: 768px) {
+    .dataset-figure {
+        margin: 1.5rem 0;
+    }
+    
+    .dataset-figure figcaption {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Content Box Lists - Consistent Formatting */
+.content-box ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.content-box ul li {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    color: var(--text-col);
+    font-family: var(--body-font);
+    line-height: 1.6;
+}
+
+/* Feature List - specific styling */
+.feature-list {
+    list-style: disc;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.feature-list li {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    color: var(--text-col);
+    font-family: var(--body-font);
+    line-height: 1.6;
+}
+
+/* Stats Grid - Use body font for everything */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: var(--body-font);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navbar-col);
+    font-family: var(--body-font);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--text-col);
+    font-family: var(--body-font);
+    font-weight: 600;
+}
+
+/* Tables - Body font for everything */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background-color: white;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: var(--body-font);
+}
+
+.data-table thead {
+    background-color: var(--navbar-col);
+    color: white;
+}
+
+.data-table th {
+    padding: 0.9rem;
+    text-align: left;
+    font-family: var(--body-font);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.data-table td {
+    padding: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--bg-gray);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Content Box Lists - Consistent Formatting */
+.content-box ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.content-box ul li {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    color: var(--text-col);
+    font-family: var(--body-font);
+    line-height: 1.6;
+}
+
+/* Feature List - specific styling */
+.feature-list {
+    list-style: disc;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.feature-list li {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    color: var(--text-col);
+    font-family: var(--body-font);
+    line-height: 1.6;
+}
+
+/* Stats Grid - Use body font for everything */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: var(--body-font);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navbar-col);
+    font-family: var(--body-font);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--text-col);
+    font-family: var(--body-font);
+    font-weight: 600;
+}
+
+/* Tables - Body font for everything */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background-color: white;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: var(--body-font);
+}
+
+.data-table thead {
+    background-color: var(--navbar-col);
+    color: white;
+}
+
+.data-table th {
+    padding: 0.9rem;
+    text-align: left;
+    font-family: var(--body-font);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.data-table td {
+    padding: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--bg-gray);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Content Box - Reduce padding */
+.content-box {
+    background-color: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.content-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-col);
+    border-bottom: 2px solid var(--navbar-col);
+    padding-bottom: 0.5rem;
+}
+
+.content-box h4 {
+    font-size: 1.15rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.65rem;
+    color: var(--text-col);
+}
+
+.content-box p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Figure Styling */
+.dataset-figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.dataset-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.dataset-figure figcaption {
+    margin-top: 1rem;
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+    color: var(--mid-col);
+    font-style: italic;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.dataset-figure figcaption strong {
+    font-weight: 600;
+    color: var(--text-col);
+    font-style: normal;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-box {
+        padding: 1.25rem;
+    }
+
+    .dataset-figure {
+        margin: 1.25rem 0;
+    }
+    
+    .dataset-figure figcaption {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+
+    .data-table {
+        font-size: 0.85rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.7rem;
+    }
+
+    .stats-grid {
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+}

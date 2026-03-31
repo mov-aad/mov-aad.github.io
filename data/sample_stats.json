@@ -1,0 +1,18 @@
+{
+    "totalSamples": "4,800",
+    "duration": "~64 min/subject",
+    "categories": "Single & Multi-talker",
+    "participants": "50",
+    "composition": {
+        "training": {
+            "samples": "Single: 40 trials",
+            "duration": "~40s/trial",
+            "percentage": "42%"
+        },
+        "validation": {
+            "samples": "Multi: 56 trials",
+            "duration": "~44s/trial",
+            "percentage": "58%"
+        }
+    }
+}
